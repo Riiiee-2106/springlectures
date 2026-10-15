@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--5.) project tag - starting tag of pom-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!--6.)these three lines tell the schema design of pom -  which tags are allowed-->
+
+    <modelVersion>4.0.0</modelVersion> <!-- 7.)for eg - this model version tag is allowed-->
+<!--8.)  <abc></abc> - so we cannot define any tag of our choice here-->
+<!--    9.) model version -  version of pom model-->
+
+
+
+
+
+<!--    26.) parent tag is missing in springlecture3 - pom.xml have -
+two pom -(pom work on inheritance
+(parent of all pom ) super pom - by default if some pom dont have pom , super pom becomes parent of it
+ and (effective pom) -> maven finally use it (your pom + super pom  -->
+<!--    27.)there are many configurations in pom but not to make it very heavy we keep it all in super pom ,and we inherit it from there
+we can also override any tag from parent
+for eg = repositories
+-->
+
+
+<!--    28.) from where we downloading 3rd party = central, local,or my own company(other remote) -->
+<!--     <repositories>
+            <repository>
+                <id>company-repo</id>
+                 <url>https://repo.coderarmy.in/maven</url>
+            </repository>
+        </repositories> -->
+
+
+<!--    10.) these three four tags  - help to uniquely identify our project-->
+<!--    11.)  group id - help uniquely provide group id using domain id (reverse) for eg - domain.org  => can be provided as org.domain , which is specific to one person or url to one single user-->
+    <groupId>org.springlecture</groupId>
+<!--    12.)  project name is the artifact id (package name gets made of this and version) -->
+    <artifactId>springlecture3</artifactId>
+<!--    13.) projects which are in working phase (snapshot)- means which is building right now, project is not yet completed -->
+    <version>1.0-SNAPSHOT${author.name}</version>
+<!--    15.) we passed key value pair with in ${}-->
+
+
+
+
+<!--    14.)  key value pair - in xml we provide key with values,we can keep key and value of our choice here as well-->
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <author.name>richa</author.name>
+<!--  16.) -> author.name is new key value pair of my choice ,it can be used anywhere using ${}-->
+    </properties>
+
+
+
+
+<!-- 18.) we can also provide other tags  ,packaging is the tag which you pass - package will be of (jar) java archives or (war)web archiver-->
+    <packaging>jar</packaging>
+
+
+<!--  19.) dependencies tag- external jar files (3rd party files) can be passed inside dependencies tag -->
+<!--  20.) within dependencies each 3rd party jars have their own artifact_id and group_id or version_id as well  which we pass under another tag called as dependency tag -->
+    <dependencies>
+<!--  21.) we dont need to learn these 3rd party artifactid,groupid,versionid name = we can download it from maven repo-->
+        <!-- 22.) Source: https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.7.0</version>
+<!--   23.)  scope is optional tag - it tells this dependency will be required in which phase of your code - it is required in compile phase-->
+            <scope>compile</scope>
+
+<!--  24.) 1.after passing dependency we need to reload maven and all your dependencies will be downloaded => and comes in external libraries
+2.the first tym if you download the dependencies from mvn - it may take some time to get downloaded in intellij -
+
+3.if already downloaded before it must be cached in your local system
+
+
+4.one dependency can have transitive dependencies which is also downloaded via maven-->
+        </dependency>
+
+
+
+        <!--25.)  Source: https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>7.2.24.Final</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+    </dependencies>
+
+
+
+
+    <!-- 2.)  pom.xml - project object model-->
+<!--    3.)  xml based file
+4.)what it tells - it tells everything about your project-->
+</project>
+
+<!--17.) so the package name is - springlecture3 1.0-SNAPSHOTricha   , artifactid version-->
